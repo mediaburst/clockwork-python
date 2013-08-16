@@ -6,14 +6,12 @@ Clone the library from github. Currently there is no package that you can get fr
 
 ## Requirements
 
-Python 2.6+
-[lxml][4] 
+* Python 2.6+
+* [lxml][1] 
 
 ## Usage
 
-For more information on the available optional parameters for the API (Clockwork::API), see [here][4].
-
-For more information on the available optional parameters for each SMS (Clockwork::SMS), see [here][5]. For more information on the response object returned from each SMS (Clockwork::SMS::Response), see [here][6].
+For more information on the available optional parameters for the SMS and API classes, see [here][2]. 
 
 ### Send a single SMS message
 
@@ -63,17 +61,17 @@ A copy of this license can be found in LICENSE.
 
 ## Contributing
 
-If you have any feedback on this wrapper drop us an email to [hello@clockworksms.com][2].
+If you have any feedback on this wrapper drop us an email to [hello@clockworksms.com][3].
 
-The project is hosted on GitHub at [http://www.github.com/mediaburst/clockwork-python][3].
+The project is hosted on GitHub at [http://www.github.com/mediaburst/clockwork-python][4].
 
 If you would like to contribute a bug fix or improvement please fork the project 
 and submit a pull request. Please add tests for your use case.
 
-[1]: http://rubydoc.info/github/mediaburst/clockwork-python/master/frames
-[2]: mailto:hello@clockworksms.com
-[3]: http://www.github.com/mediaburst/clockwork-python
-[4]: http://lxml.de/
+[1]: http://lxml.de/
+[2]: http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/
+[3]: mailto:hello@clockworksms.com
+[4]: http://www.github.com/mediaburst/clockwork-python
 
 ## Changelog
 

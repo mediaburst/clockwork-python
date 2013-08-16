@@ -43,22 +43,6 @@ class API(object):
 		self.truncate = truncate
 		self.use_ssl = use_ssl
 
-	def get_credit(self):
-		"""Check the remaining credit for this account.
-		   Returns the number of messages remaining"""
-		
-		xml_root = self.__init_xml('Credit')
-
-		response = clockwork_http.request(CREDIT_URL,etree.tostring(xml_root))
-		data_etree = etree.fromstring(response['data'])
-
-		# Get the response
-		err_desc = data_etree.find('ErrDesc')	
-		if err_desc is not None:
-			raise clockwork_exceptions.ApiException(err_desc.text, data_etree.find('ErrNo').text)
-
-		return data_etree.find('Credit').text
-
 	def get_balance(self):
 		"""Check the balance fot this account.
 		   Returns a dictionary containing:
