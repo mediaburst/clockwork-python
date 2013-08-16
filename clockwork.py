@@ -10,8 +10,7 @@ BALANCE_URL = 'https://api.clockworksms.com/xml/balance.aspx'
 class SMS(object):
 	"""An SMS object"""
 
-	def __init__(self, to, message, content = None, client_id = None, from_name = None, long = None, truncate = None, invalid_char_option = None):
-		self.content = content
+	def __init__(self, to, message, client_id = None, from_name = None, long = None, truncate = None, invalid_char_option = None):
 		self.client_id = client_id
 		self.from_name = from_name
 		self.long = long
@@ -101,14 +100,11 @@ class API(object):
 				element = etree.SubElement(sms,sms_element)
 				element.text = msg[sms_element]
 
-		print etree.tostring(xml_root)
-
+		# print etree.tostring(xml_root)
 		response = clockwork_http.request(SMS_URL,etree.tostring(xml_root))
 		response_data = response['data']
 
-		print response_data
-
-		# response_data = '<?xml version="1.0" encoding="utf-8"?><Message_Resp><SMS_Resp><WrapperId>0</WrapperId><To>447561538149</To><ClientID>Client1</ClientID><MessageID>VI_193018655</MessageID></SMS_Resp></Message_Resp>'
+		# print response_data
 		data_etree = etree.fromstring(response_data)
 
 		# Check for general error

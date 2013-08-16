@@ -2,9 +2,12 @@
 
 ## Install
 
-Get the library from github.
+Clone the library from github. Currently there is no package that you can get from a package manager such as pip.
 
-The library was designed for python 2.x. 
+## Requirements
+
+Python 2.6+
+[lxml][4] 
 
 ## Usage
 
@@ -70,6 +73,7 @@ and submit a pull request. Please add tests for your use case.
 [1]: http://rubydoc.info/github/mediaburst/clockwork-python/master/frames
 [2]: mailto:hello@clockworksms.com
 [3]: http://www.github.com/mediaburst/clockwork-python
+[4]: http://lxml.de/
 
 ## Changelog
 
