@@ -2,12 +2,19 @@
 
 ## Install
 
-Clone the library from github. Currently there is no package that you can get from a package manager such as pip.
+The easiest way to install is through "pip":
+    
+    pip install clockwork
 
 ## Requirements
 
 * Python 2.6+
 * [lxml][1] 
+
+For an easy life, we recommend installing lxml thorugh a package manager, e.g.:
+    
+    sudo apt-get install python-lxml    # Debian based
+    sudo yum install pyhton-lxml        # Red Hat based
 
 ## Usage
 
@@ -15,7 +22,7 @@ For more information on the available optional parameters for the SMS and API cl
 
 ### Send a single SMS message
 
-    import 'clockwork'
+    from clockwork import clockwork
     api = clockwork.API('API_KEY_GOES_HERE')
     message = clockwork.SMS(to = '441234123456', message = 'This is a test message.')
     response = api.send(message)
@@ -30,7 +37,7 @@ For more information on the available optional parameters for the SMS and API cl
 
 Simply pass an array of sms objects to the send method. Instead of sending back a single sms response, an array of sms responses will be returned:
 
-    import 'clockwork'
+    from clockwork import clockwork
     api = clockwork.API('API_KEY_GOES_HERE')
     message1 = clockwork.SMS(to = '441234123456', message = 'This is a test message 1.')
     message2 = clockwork.SMS(to = '441234123457', message = 'This is a test message 2.')
@@ -48,16 +55,16 @@ Passing an array of messages to the send method is much more efficient than maki
 
 ### Check balance
 
-    import 'clockwork'
+    from clockwork import clockwork
     api = clockwork.API('API_KEY_GOES_HERE')
     balance = api.get_balance()
     print (balance) # => {'currency': None, 'balance': '231.03', 'account_type': 'PAYG'}
 
 ## License
 
-This project is licensed under the ISC open-source license.
+This project is licensed under the MIT open-source license.
 
-A copy of this license can be found in LICENSE.
+A copy of this license can be found in LICENSE.txt
 
 ## Contributing
 
