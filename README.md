@@ -62,7 +62,7 @@ The `optional_setting` parameters allows you to set the following, which will be
 
 Parameter | Description 
 --------- | -----------  
-from_name | Sets the [from address](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-from "from address") 
+from_name | Sets the [from name](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-from "from address") 
 concat | Sets the [concat](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-concat) setting 
 invalid_char_option | Sets the [InvalidCharOption](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-invalidcharaction) setting  
 truncate | Sets the [truncate](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-truncate) setting
@@ -81,7 +81,7 @@ In a similar pattern to the API parameters, the `optional_setting` parameters al
 Parameter | Description 
 --------- | ----------- 
 client_id | Sets the [ClientId](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-clientid) setting 
-from_name | Sets the [from address](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-from "from address") 
+from_name | Sets the [from name](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-from "from address") 
 invalid_char_option | Sets the [InvalidCharOption](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-invalidcharaction) setting  
 truncate | Sets the [truncate](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-truncate) setting
 
