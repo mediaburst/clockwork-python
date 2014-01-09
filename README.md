@@ -18,8 +18,6 @@ For an easy life, we recommend installing lxml thorugh a package manager, e.g.:
 
 ## Usage
 
-For more information on the available optional parameters for the SMS and API classes, see [here][2]. 
-
 ### Send a single SMS message
 
     from clockwork import clockwork
@@ -53,12 +51,53 @@ Simply pass an array of sms objects to the send method. Instead of sending back 
     
 Passing an array of messages to the send method is much more efficient than making multiple calls to the `send` method; as well making less round-trips to the server the messages are "batched" in clockwork, which is significantly better for performance.
 
+### Send messages - available parameters
+
+This wrapper supports a subset of the available clockwork API parameters for sending  (for the full set see [here][2]).
+
+##### Setting parameters for all messages
+
+You create an `api` object with `api = clockwork.API(api_key,[optional_setting = value,..]`
+The `optional_setting` parameters allows you to set the following, which will be used for all messages sent through the `api` object:
+
+Parameter | Description 
+--------- | -----------  
+from_name | Sets the [from address](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-from "from address") 
+concat | Sets the [concat](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-concat) setting 
+invalid_char_option | Sets the [InvalidCharOption](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-invalidcharaction) setting  
+truncate | Sets the [truncate](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-truncate) setting
+
+So for example if I want all messages to use the from address 'bobby', I would do:
+
+    api = clockwork.API('MY_API_KEY', from_name = 'Bobby')
+
+
+##### Setting parameters for each message.
+
+You create an `sms` object with `sms = clockwork.SMS(to = 'xxx', message = 'xxx', [optional_setting = value,..]`
+
+In a similar pattern to the API parameters, the `optional_setting` parameters allows you to set the following additional parameters for an individual message:
+ 
+Parameter | Description 
+--------- | ----------- 
+client_id | Sets the [ClientId](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-clientid) setting 
+from_name | Sets the [from address](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-from "from address") 
+invalid_char_option | Sets the [InvalidCharOption](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-invalidcharaction) setting  
+truncate | Sets the [truncate](http://www.clockworksms.com/doc/clever-stuff/xml-interface/send-sms/#param-truncate) setting
+
+Any parameters defined here will take precedence over the same one defined on the `api` object:
+
+    api = clockwork.API('MY_API_KEY',from_name = 'Bobby')
+    sms = clockwork.SMS(to = '441234123456', message = 'This is a test message 1.', from_name = 'Sammy')
+    response = api.send(sms) # WILL SEND WITH FROM ADDRESS 'Sammy'
+
 ### Check balance
 
     from clockwork import clockwork
     api = clockwork.API('API_KEY_GOES_HERE')
     balance = api.get_balance()
     print (balance) # => {'currency': None, 'balance': '231.03', 'account_type': 'PAYG'}
+
 
 ## License
 
