@@ -11,7 +11,7 @@ def request(url, xml):
 	
 	r = urllib2.Request(url, xml)
 	r.add_header('Content-Type','application/xml')
-	r.add_header('User-Agent','Clockwork Python wrapper')
+	r.add_header('User-Agent','Clockwork Python wrapper/1.0')
 
 	result = {}
 	try:
