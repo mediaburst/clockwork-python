@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import unittest
 import clockwork
 import clockwork_exceptions
@@ -12,6 +14,26 @@ class ApiTests(unittest.TestCase):
 		sms = clockwork.SMS(to="441234567890", message="This is a test message")
 		response = api.send(sms)
 		self.assertTrue(response.success)
+
+	def test_should_send_single_unicode_message(self):
+		"""Sending a single SMS with the full GSM character set (apart from ESC and form feed) should work"""
+		api = clockwork.API(self.api_key)
+		sms = clockwork.SMS(
+            to="441234567890",
+		    #Message table copied from http://www.clockworksms.com/doc/reference/faqs/gsm-character-set/
+            #Note, the "/f" (form feed) character does not work as lxml prohibits it.
+			message= 	u'''@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ'''
+				 		u''' !“#¤%&‘()*+,-./'''
+				        u'''0123456789:;<=>?'''
+				        u'''¡ABCDEFGHIJKLMNO'''
+				        u'''PQRSTUVWXYZÄÖÑÜ§'''
+				        u'''¿abcdefghijklmno'''
+				        u'''pqrstuvwxyzäöñüà'''
+                        u'''€[\]^{|}~'''
+			,long=True)
+		response = api.send(sms)
+		self.assertTrue(response.success)
+
 
 	def test_should_fail_with_no_message(self):
 		"""Sending a single SMS with no message should fail"""
