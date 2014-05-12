@@ -85,7 +85,7 @@ class API(object):
 				element.text = msg[sms_element]
 
 		# print etree.tostring(xml_root)
-		response = clockwork_http.request(SMS_URL,etree.tostring(xml_root))
+		response = clockwork_http.request(SMS_URL,etree.tostring(xml_root, encoding='utf-8'))
 		response_data = response['data']
 
 		# print response_data
@@ -145,7 +145,7 @@ class API(object):
 			if val_to_use == None and hasattr(self,attr):
 				val_to_use = getattr(self,attr)
 			if val_to_use != None:
-				attributes[attributes_to_translate[attr]] = str(val_to_use)
+				attributes[attributes_to_translate[attr]] = unicode(val_to_use)
 
 		return attributes
 		
