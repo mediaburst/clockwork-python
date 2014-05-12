@@ -52,7 +52,7 @@ class API(object):
 		
 		xml_root = self.__init_xml('Balance')
 
-		response = clockwork_http.request(BALANCE_URL,etree.tostring(xml_root))
+		response = clockwork_http.request(BALANCE_URL,etree.tostring(xml_root, encoding='utf-8'))
 		data_etree = etree.fromstring(response['data'])
 
 		err_desc = data_etree.find('ErrDesc')	
