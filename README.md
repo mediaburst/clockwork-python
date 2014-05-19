@@ -124,3 +124,15 @@ and submit a pull request. Please add tests for your use case.
 ### 1.0.0 (01st August, 2013)
 
 * Initial release of wrapper [MR]
+
+### 1.0.1 (01st September, 2013)
+
+* Minor changes
+
+### 1.0.2 (18th May 2014)
+
+* Unicode support added [MR]
+
+Credits and Acknowledgements
+
+Many thanks to @cHemingway for adding Unicode support.
