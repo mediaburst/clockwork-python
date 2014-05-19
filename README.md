@@ -133,6 +133,6 @@ and submit a pull request. Please add tests for your use case.
 
 * Unicode support added [MR]
 
-Credits and Acknowledgements
+## Credits and Acknowledgements
 
 Many thanks to @cHemingway for adding Unicode support.
