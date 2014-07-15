@@ -20,35 +20,39 @@ For an easy life, we recommend installing lxml thorugh a package manager, e.g.:
 
 ### Send a single SMS message
 
-    from clockwork import clockwork
-    api = clockwork.API('API_KEY_GOES_HERE')
-    message = clockwork.SMS(to = '441234123456', message = 'This is a test message.')
-    response = api.send(message)
-    
-    if response.success:
-        print (response.id)
-    else:
-        print (response.error_code)
-        print (response.error_description)
+```python
+from clockwork import clockwork
+api = clockwork.API('API_KEY_GOES_HERE')
+message = clockwork.SMS(to = '441234123456', message = 'This is a test message.')
+response = api.send(message)
+
+if response.success:
+    print (response.id)
+else:
+    print (response.error_code)
+    print (response.error_description)
+```
    
 ### Send multiple SMS messages
 
 Simply pass an array of sms objects to the send method. Instead of sending back a single sms response, an array of sms responses will be returned:
 
-    from clockwork import clockwork
-    api = clockwork.API('API_KEY_GOES_HERE')
-    message1 = clockwork.SMS(to = '441234123456', message = 'This is a test message 1.')
-    message2 = clockwork.SMS(to = '441234123457', message = 'This is a test message 2.')
-    message3 = clockwork.SMS(to = '441234123458', message = 'This is a test message 3.')
-    response = api.send([message1,message2,message3])
-    
-    for sms_response in response:
-        if sms_response.success:
-            print (sms_response.id)
-        else:
-            print (sms_response.error_code)
-            print (sms_response.error_description)
-    
+```python
+from clockwork import clockwork
+api = clockwork.API('API_KEY_GOES_HERE')
+message1 = clockwork.SMS(to = '441234123456', message = 'This is a test message 1.')
+message2 = clockwork.SMS(to = '441234123457', message = 'This is a test message 2.')
+message3 = clockwork.SMS(to = '441234123458', message = 'This is a test message 3.')
+response = api.send([message1,message2,message3])
+
+for sms_response in response:
+    if sms_response.success:
+        print (sms_response.id)
+    else:
+        print (sms_response.error_code)
+        print (sms_response.error_description)
+```
+
 Passing an array of messages to the send method is much more efficient than making multiple calls to the `send` method; as well making less round-trips to the server the messages are "batched" in clockwork, which is significantly better for performance.
 
 ### Send messages - available parameters
@@ -69,8 +73,9 @@ truncate | Sets the [truncate](http://www.clockworksms.com/doc/clever-stuff/xml-
 
 So for example if I want all messages to use the from address 'bobby', I would do:
 
+```python
     api = clockwork.API('MY_API_KEY', from_name = 'Bobby')
-
+```
 
 ##### Setting parameters for each message.
 
@@ -87,17 +92,20 @@ truncate | Sets the [truncate](http://www.clockworksms.com/doc/clever-stuff/xml-
 
 Any parameters defined here will take precedence over the same one defined on the `api` object:
 
-    api = clockwork.API('MY_API_KEY',from_name = 'Bobby')
-    sms = clockwork.SMS(to = '441234123456', message = 'This is a test message 1.', from_name = 'Sammy')
-    response = api.send(sms) # WILL SEND WITH FROM ADDRESS 'Sammy'
+```python
+api = clockwork.API('MY_API_KEY',from_name = 'Bobby')
+sms = clockwork.SMS(to = '441234123456', message = 'This is a test message 1.', from_name = 'Sammy')
+response = api.send(sms) # WILL SEND WITH FROM ADDRESS 'Sammy'
+```
 
 ### Check balance
 
-    from clockwork import clockwork
-    api = clockwork.API('API_KEY_GOES_HERE')
-    balance = api.get_balance()
-    print (balance) # => {'currency': None, 'balance': '231.03', 'account_type': 'PAYG'}
-
+```python
+from clockwork import clockwork
+api = clockwork.API('API_KEY_GOES_HERE')
+balance = api.get_balance()
+print (balance) # => {'currency': None, 'balance': '231.03', 'account_type': 'PAYG'}
+```
 
 ## License
 
