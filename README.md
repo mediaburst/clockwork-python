@@ -30,7 +30,7 @@ if response.success:
     print (response.id)
 else:
     print (response.error_code)
-    print (response.error_description)
+    print (response.error_message)
 ```
    
 ### Send multiple SMS messages
@@ -50,7 +50,7 @@ for sms_response in response:
         print (sms_response.id)
     else:
         print (sms_response.error_code)
-        print (sms_response.error_description)
+        print (sms_response.error_message)
 ```
 
 Passing an array of messages to the send method is much more efficient than making multiple calls to the `send` method; as well making less round-trips to the server the messages are "batched" in clockwork, which is significantly better for performance.
