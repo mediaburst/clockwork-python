@@ -27,7 +27,7 @@ def request(url, xml):
 		result['lastmodified'] = f.headers.get('Last-Modified')
 		if f.headers.get('content−encoding', '') == 'gzip':
 			result['data'] = gzip.GzipFile(fileobj=StringIO(result['data'])).read()
-   		if hasattr(f, 'url'):
+		if hasattr(f, 'url'):
 			result['url'] = f.url
 			result['status'] = 200
 	f.close()
