@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='Clockwork',
-    version='1.0',
+    version='1.0.3',
     packages=['clockwork'],
     install_requires=['lxml'],
     license='MIT',

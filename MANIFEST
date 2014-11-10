@@ -2,7 +2,7 @@
 LICENSE.txt
 README.md
 setup.py
-clockwork/__init__.py
-clockwork/clockwork.py
-clockwork/clockwork_exceptions.py
-clockwork/clockwork_http.py
+clockwork\__init__.py
+clockwork\clockwork.py
+clockwork\clockwork_exceptions.py
+clockwork\clockwork_http.py
