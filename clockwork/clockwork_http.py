@@ -1,8 +1,10 @@
 # coding: utf-8
 try:
     import urllib.request as _urllib # py3
+    from urllib.error import URLError
 except ImportError:
     import urllib2 as _urllib # py2
+    from urllib2 import URLError
 
 from . import clockwork_exceptions
 
@@ -20,7 +22,7 @@ def request(url, xml):
     result = {}
     try:
         f = _urllib.urlopen(r)
-    except _urllib.URLError as error:
+    except URLError as error:
         raise clockwork_exceptions.HttpException("Error connecting to clockwork server: %s" % error)
     
     result['data'] = f.read()
