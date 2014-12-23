@@ -140,7 +140,12 @@ and submit a pull request. Please add tests for your use case.
 ### 1.0.2 (18th May 2014)
 
 * Unicode support added [MR]
+* 
+### 1.03 (23rd December 2014)
+* Replacing Distribute with Setuptools
+* 
 
 ## Credits and Acknowledgements
+Thanks to bjornpost for his work on Python 3 support and replacing Distribute with Setuptools
 
 Many thanks to @cHemingway for adding Unicode support.
