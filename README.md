@@ -146,6 +146,6 @@ and submit a pull request. Please add tests for your use case.
 * Replacing Distribute with Setuptools
 
 ## Credits and Acknowledgements
-Thanks to bjornpost for his work on Python 3 support and replacing Distribute with Setuptools
+Thanks to [bjornpost](https://github.com/bjornpost) for his work on Python 3 support and replacing Distribute with Setuptools
 
 Many thanks to @cHemingway for adding Unicode support.
