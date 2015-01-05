@@ -129,21 +129,26 @@ and submit a pull request. Please add tests for your use case.
 
 ## Changelog
 
-### 1.0.0 (01st August, 2013)
+### 1.1.0 (5th January 2015)
 
-* Initial release of wrapper [MR]
+* Python3 Support
+
+### 1.03 (23rd December 2014)
+
+* Replacing Distribute with Setuptools
+
+### 1.0.2 (18th May 2014)
+
+* Unicode support added [MR]
 
 ### 1.0.1 (01st September, 2013)
 
 * Minor changes
 
-### 1.0.2 (18th May 2014)
+### 1.0.0 (01st August, 2013)
 
-* Unicode support added [MR]
- 
-### 1.03 (23rd December 2014)
+* Initial release of wrapper [MR]
 
-* Replacing Distribute with Setuptools
 
 ## Credits and Acknowledgements
 Thanks to [bjornpost](https://github.com/bjornpost) for his work on Python 3 support and replacing Distribute with Setuptools
