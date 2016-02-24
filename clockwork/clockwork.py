@@ -1,5 +1,5 @@
-from lxml import etree
-from . import clockwork_http 
+from xml.etree import ElementTree as etree
+from . import clockwork_http
 from . import clockwork_exceptions
 
 SMS_URL = 'https://api.clockworksms.com/xml/send.aspx'
@@ -10,7 +10,7 @@ BALANCE_URL = 'https://api.clockworksms.com/xml/balance.aspx'
 class SMS(object):
     """An SMS object"""
 
-    def __init__(self, to, message, client_id = None, from_name = None, long = None, truncate = None, invalid_char_option = None):
+    def __init__(self, to, message, client_id=None, from_name=None, long=None, truncate=None, invalid_char_option=None):
         self.client_id = client_id
         self.from_name = from_name
         self.long = long
@@ -32,9 +32,10 @@ class SMSResponse(object):
 
 class API(object):
     """Wraps the clockwork API"""
-    def __init__(self, apikey, from_name = 'Clockwork', concat = 3, 
-        invalid_char_option = 'error', long = False, truncate = True, 
-        use_ssl = True):
+
+    def __init__(self, apikey, from_name='Clockwork', concat=3,
+        invalid_char_option='error', long=False, truncate=True,
+        use_ssl=True):
         self.apikey = apikey
         self.from_name = from_name
         self.concat = concat
@@ -49,10 +50,10 @@ class API(object):
            account_type: The account type
            balance: The balance remaining on the account
            currency: The currency used for the account balance. Assume GBP in not set"""
-        
+
         xml_root = self.__init_xml('Balance')
 
-        response = clockwork_http.request(BALANCE_URL,etree.tostring(xml_root, encoding='utf-8'))
+        response = clockwork_http.request(BALANCE_URL, etree.tostring(xml_root, encoding='utf-8'))
         data_etree = etree.fromstring(response['data'])
 
         err_desc = data_etree.find('ErrDesc')
@@ -80,11 +81,11 @@ class API(object):
             msg = self.__build_sms_data(m)
             sms = etree.SubElement(xml_root, 'SMS')
             for sms_element in msg:
-                element = etree.SubElement(sms,sms_element)
+                element = etree.SubElement(sms, sms_element)
                 element.text = msg[sms_element]
 
         # print etree.tostring(xml_root)
-        response = clockwork_http.request(SMS_URL,etree.tostring(xml_root, encoding='utf-8'))
+        response = clockwork_http.request(SMS_URL, etree.tostring(xml_root, encoding='utf-8'))
         response_data = response['data']
 
         # print response_data
@@ -98,22 +99,22 @@ class API(object):
         # Return a consistent object
         results = []
         for sms in data_etree:
-            matching_sms = next((s for s in messages if str(s.wrapper_id) == sms.find('WrapperID').text),None)
+            matching_sms = next((s for s in messages if str(s.wrapper_id) == sms.find('WrapperID').text), None)
             new_result = SMSResponse(
                 sms = matching_sms,
                 id = '' if sms.find('MessageID') is None else sms.find('MessageID').text,
                 error_code = 0 if sms.find('ErrNo') is None else sms.find('ErrNo').text,
                 error_message = '' if sms.find('ErrDesc') is None else sms.find('ErrDesc').text,
-                success = True if sms.find('ErrNo') is None else (sms.find('ErrNo').text == 0) 
+                success = True if sms.find('ErrNo') is None else (sms.find('ErrNo').text == 0)
             )
             results.append(new_result)
 
         if len(results) > 1:
             return results
-        else:
-            return results[0]
 
-    def __init_xml(self,rootElementTag):
+        return results[0]
+
+    def __init_xml(self, rootElementTag):
         """Init a etree element and pop a key in there"""
         xml_root = etree.Element(rootElementTag)
         key = etree.SubElement(xml_root, "Key")
@@ -125,7 +126,7 @@ class API(object):
         """Build a dictionary of SMS message elements"""
 
         attributes = {}
-        
+
         attributes_to_translate = {
             'to' : 'To',
             'message' : 'Content',
@@ -140,10 +141,10 @@ class API(object):
         for attr in attributes_to_translate:
             val_to_use = None
             if hasattr(message, attr):
-                val_to_use = getattr(message,attr)
-            if val_to_use == None and hasattr(self,attr):
-                val_to_use = getattr(self,attr)
-            if val_to_use != None:
+                val_to_use = getattr(message, attr)
+            if val_to_use is None and hasattr(self, attr):
+                val_to_use = getattr(self, attr)
+            if val_to_use is not None:
                 attributes[attributes_to_translate[attr]] = str(val_to_use)
 
         return attributes

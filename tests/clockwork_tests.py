@@ -64,7 +64,7 @@ class ApiTests(unittest.TestCase):
         api = clockwork.API(self.api_key)
         sms1 = clockwork.SMS(to="441234567890", message="This is a test message 1")
         sms2 = clockwork.SMS(to="441234567890", message="")
-        response = api.send([sms1,sms2])
+        response = api.send([sms1, sms2])
 
         self.assertTrue(response[0].success)
         self.assertFalse(response[1].success)
@@ -77,12 +77,7 @@ class ApiTests(unittest.TestCase):
     def test_should_be_able_to_get_balance(self):
         api = clockwork.API(self.api_key)
         balance = api.get_balance()
-        self.assertEqual('PAYG',balance['account_type'])
+        self.assertEqual('PAYG', balance['account_type'])
 
 if __name__ == "__main__":
     unittest.main()
-
-
-
-
-
