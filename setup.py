@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='Clockwork',
-    version='1.1.0',
+    version='1.2.0',
     packages=['clockwork'],
     license='MIT',
     author='Mediaburst',

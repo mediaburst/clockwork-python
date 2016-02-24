@@ -122,6 +122,10 @@ and submit a pull request. Please add tests for your use case.
 
 ## Changelog
 
+### 1.2.0 (24th February 2016)
+
+* Removed lxml dependency
+ 
 ### 1.1.0 (5th January 2015)
 
 * Python3 Support
@@ -144,6 +148,9 @@ and submit a pull request. Please add tests for your use case.
 
 
 ## Credits and Acknowledgements
+
+Thanks to [zeroSteiner](https://github.com/zeroSteiner) for removing the lxml dependency and bringing ElementTree into the wrapper.
+
 Thanks to [bjornpost](https://github.com/bjornpost) for his work on Python 3 support and replacing Distribute with Setuptools
 
-Many thanks to @cHemingway for adding Unicode support.
+Many thanks to [cHemingway](https://github.com/cHemingway) for adding Unicode support.
