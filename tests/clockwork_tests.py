@@ -21,9 +21,8 @@ class ApiTests(unittest.TestCase):
         sms = clockwork.SMS(
             to="441234567890",
             #Message table copied from http://www.clockworksms.com/doc/reference/faqs/gsm-character-set/
-            #Note, the "/f" (form feed) character does not work as lxml prohibits it.
             message=u'''@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ'''
-                    u''' !“#¤%&‘()*+,-./'''
+                    u''' !"#¤%&'()*+,-./'''
                     u'''0123456789:;<=>?'''
                     u'''¡ABCDEFGHIJKLMNO'''
                     u'''PQRSTUVWXYZÄÖÑÜ§'''
@@ -33,7 +32,6 @@ class ApiTests(unittest.TestCase):
             ,long=True)
         response = api.send(sms)
         self.assertTrue(response.success)
-
 
     def test_should_fail_with_no_message(self):
         """Sending a single SMS with no message should fail"""
