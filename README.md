@@ -16,7 +16,7 @@ The easiest way to install is through "pip":
 
 ```python
 from clockwork import clockwork
-api = clockwork.API('API_KEY_GOES_HERE')
+api = clockwork.API('API_KEY_GOES_HERE') #Be careful not to post your API Keys to public repositories.
 message = clockwork.SMS(to = '441234123456', message = 'This is a test message.')
 response = api.send(message)
 
@@ -33,7 +33,7 @@ Simply pass an array of sms objects to the send method. Instead of sending back 
 
 ```python
 from clockwork import clockwork
-api = clockwork.API('API_KEY_GOES_HERE')
+api = clockwork.API('API_KEY_GOES_HERE') #Be careful not to post your API Keys to public repositories.
 message1 = clockwork.SMS(to = '441234123456', message = 'This is a test message 1.')
 message2 = clockwork.SMS(to = '441234123457', message = 'This is a test message 2.')
 message3 = clockwork.SMS(to = '441234123458', message = 'This is a test message 3.')
@@ -68,7 +68,7 @@ truncate | Sets the [truncate](http://www.clockworksms.com/doc/clever-stuff/xml-
 So for example if I want all messages to use the from address 'bobby', I would do:
 
 ```python
-    api = clockwork.API('MY_API_KEY', from_name = 'Bobby')
+    api = clockwork.API('MY_API_KEY', from_name = 'Bobby') 
 ```
 
 ##### Setting parameters for each message.
@@ -96,7 +96,7 @@ response = api.send(sms) # WILL SEND WITH FROM ADDRESS 'Sammy'
 
 ```python
 from clockwork import clockwork
-api = clockwork.API('API_KEY_GOES_HERE')
+api = clockwork.API('API_KEY_GOES_HERE')  #Be careful not to post your API Keys to public repositories.
 balance = api.get_balance()
 print (balance) # => {'currency': None, 'balance': '231.03', 'account_type': 'PAYG'}
 ```
